@@ -9,6 +9,8 @@ stage('pulling the code'){
 stage('build'){
     steps{ 
         sh 'mvn clean package'
+        sh 'pwd'
+        sh 'ls'
 
 }}
 }
