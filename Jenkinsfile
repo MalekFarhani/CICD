@@ -9,12 +9,26 @@ stage('pulling the code'){
 stage('build'){
     steps{ 
         sh 'mvn clean package'
-        sh 'pwd'
-        sh 'ls'
-        sh 'ls target/'
+        sh 'mv target/*.war target/myweb.war'
         
 
 }}
+stage ('deploy-dev'){
+    steps{
+        sshagent(['Tomcat-new']) {
+            sh """
+                scp -o StrictHostKeyChecking=no target/myweb.war  malek@4.178.98.60:/opt/tomcat8/webapps/
+
+                ssh malek@4.178.98.60 /opt/tomcat8/bin/shutdown.sh
+
+                ssh malek@4.178.98.60 /opt/tomcat8/bin/startup.sh
+
+
+            """
+
+        }
+    }
+}
 }
 }
 
