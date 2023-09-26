@@ -11,6 +11,8 @@ stage('build'){
         sh 'mvn clean package'
         sh 'pwd'
         sh 'ls'
+        sh 'cd /target/'
+        sh 'ls'
 
 }}
 }
