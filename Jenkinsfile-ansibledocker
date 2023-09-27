@@ -12,8 +12,9 @@ stage('build'){
 }}
 stage('docker'){
     steps{ 
-        sh 'docker build -t malekkkk/testing:0.0.1'
-}}
+        script{
+        sh 'docker build . -t malekkkk/testing:0.0.1'
+}}}
 
 
 }}
