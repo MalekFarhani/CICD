@@ -10,6 +10,10 @@ stage('build'){
     steps{ 
         sh 'mvn clean package'
 }}
+stage('build'){
+    steps{ 
+        sh 'docker build -t malekkkk/testing:0.0.1'
+}}
 
 
 }}
