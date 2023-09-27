@@ -1,20 +1,38 @@
 pipeline{
+    
     agent any
+
+environment {
+  DOCKER_TAG = getVersion()
+}
+
 stages{
-stage('pulling the code'){
-    steps{
-        git branch: 'main', 
-        url: 'https://github.com/MalekFarhani/TestingJavaApp'
+    stage('pulling the code'){
+        steps{
+            git branch: 'main', 
+            url: 'https://github.com/MalekFarhani/TestingJavaApp'
 }}
-stage('build'){
-    steps{ 
-        sh 'mvn clean package'
+    stage('build'){
+        steps{ 
+            sh 'mvn clean package'
 }}
-stage('docker'){
-    steps{ 
-        script{
-        sh 'docker build . -t malekkkk/testing:0.0.1'
-}}}
-
-
+    stage('docker'){
+        steps{ 
+                sh 'docker build . -t Testing:${DOCKER_TAG}'      //docker build -t my-app:latest .------ we will use the commit Id to tag our Dockerimage
+                sh 'docker tag Testing:${DOCKER_TAG} malekkkk/Testing:${DOCKER_TAG}'    // docker tag my-app:latest your-username/my-app:latest
 }}
+    stage ('docker push'){
+        steps{
+            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                    sh 'docker login -u malekkkk -p ${dockerHubPwd}'
+            }
+            sh 'docker push malekkkk/Testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
+        }
+    }
+}
+def getVersion()
+{
+   def commitHash = sh returnStdout: true, script: 'git rev-parse --short  HEAD'
+   return commitHash 
+}
+}
