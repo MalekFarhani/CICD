@@ -27,7 +27,7 @@ stages{
             //        sh 'docker login -u malekkkk -p malek docker 123'
           //  }
            
-            sh 'docker push malekkkk/malekrepo:testing'  //docker push your-username/my-app:latest
+            sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
         }
     }
 }}
