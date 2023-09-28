@@ -21,13 +21,13 @@ stages{
                 sh 'docker build . -t testing:${DOCKER_TAG}'      //docker build -t my-app:latest .------ we will use the commit Id to tag our Dockerimage
                 sh 'docker tag testing:${DOCKER_TAG} malekkkk/testing:${DOCKER_TAG}'    // docker tag my-app:latest your-username/my-app:latest
 }}
+   stage('docker login'){
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {      
+                        sh 'docker login -u malekkkk -p ${dockerHubPwd}'
+            }}
+   
     stage ('docker push'){
         steps{
-            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                  script{  
-                    sh 'docker login -u malekkkk -p ${dockerHubPwd}'
-            }}
-           
             sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
         }
     }
