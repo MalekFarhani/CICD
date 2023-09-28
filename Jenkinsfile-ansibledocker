@@ -29,10 +29,10 @@ stages{
             sh 'docker push malekkkk/Testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
         }
     }
-}
+}}
 def getVersion()
 {
    def commitHash = sh returnStdout: true, script: 'git rev-parse --short  HEAD'
    return commitHash 
 }
-}
+
