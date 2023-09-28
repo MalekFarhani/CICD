@@ -24,8 +24,9 @@ stages{
     stage ('docker push'){
         steps{
             //withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh 'docker login -u malekkkk -p malek docker 123'
+            //        sh 'docker login -u malekkkk -p malek docker 123'
           //  }
+           
             sh 'docker push malekkkk/malekrepo:testing'  //docker push your-username/my-app:latest
         }
     }
