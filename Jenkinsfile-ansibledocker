@@ -22,9 +22,10 @@ stages{
                 sh 'docker tag testing:${DOCKER_TAG} malekkkk/testing:${DOCKER_TAG}'    // docker tag my-app:latest your-username/my-app:latest
 }}
    stage('docker login'){
+        steps {
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {      
                         sh 'docker login -u malekkkk -p ${dockerHubPwd}'
-            }}
+            }}}
    
     stage ('docker push'){
         steps{
