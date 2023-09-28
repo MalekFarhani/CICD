@@ -25,11 +25,9 @@ stages{
         steps{
            // withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
               //      sh 'docker login -u malekkkk -p ${dockerHubPwd}'
-        
            // }
-        script{
             sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
-        }}
+        }
     }
 }}
 def getVersion()
