@@ -23,9 +23,9 @@ stages{
 }}
     stage ('docker push'){
         steps{
-            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh 'docker login -u malekkkk -p ${dockerHubPwd}'
-            }
+           // withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+              //      sh 'docker login -u malekkkk -p ${dockerHubPwd}'
+           // }
             sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
         }
     }
