@@ -23,7 +23,7 @@ stages{
 }}
    stage('docker login'){
         steps {
-                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerpwd')]){      
+                withCredentials([usernameColonPassword(credentialsId: 'f323cba4-184f-4560-bc50-0c8a6fa26714', variable: 'dockerr')]) {   
                         sh 'docker login -u malekkkk -p ${dockerpwd}'
             }}}
    
