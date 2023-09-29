@@ -19,9 +19,9 @@ stages{
     stage('docker'){
         steps{ 
                 sh 'docker build . -t testing:${DOCKER_TAG}'      //docker build -t my-app:latest .------ we will use the commit Id to tag our Dockerimage
-                sh 'docker tag testing:${DOCKER_TAG} malekkkk/testing:${DOCKER_TAG}'    // docker tag my-app:latest your-username/my-app:latest
+               // sh 'docker tag testing:${DOCKER_TAG} malekkkk/testing:${DOCKER_TAG}'    // docker tag my-app:latest your-username/my-app:latest
 }}
-  /* stage('docker login'){
+   stage('docker login'){
         steps {
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerHubPwd')]) {      
                         sh "echo \$dockerHubPwd | docker login -u malekkkk --password-stdin"
@@ -31,7 +31,7 @@ stages{
         steps{
             sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
         }
-    } */
+    } 
 }}
 def getVersion()
 {
