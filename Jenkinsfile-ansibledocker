@@ -29,7 +29,7 @@ stages{
    
     stage ('docker push'){
         steps{
-            sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
+            sh 'docker push malekkkk/malekrepo:testing'  //docker push malekkkk/malekrepo:tagname
         }
     }
 }}
