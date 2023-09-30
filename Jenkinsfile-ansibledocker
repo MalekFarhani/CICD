@@ -31,6 +31,11 @@ stages{
         steps{
             sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
         }
+    }
+    stage('docker deploy'){
+        steps {
+            ansiblePlaybook credentialsId: 'dev-user', disableHostKeyChecking: true, extras: 'DOCKER_TAG="${DOCKER_TAG}"', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
+        }
     } 
 }}
 def getVersion()
@@ -38,4 +43,3 @@ def getVersion()
    def commitHash = sh returnStdout: true, script: 'git rev-parse --short  HEAD'
    return commitHash 
 }
-
