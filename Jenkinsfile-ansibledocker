@@ -34,8 +34,8 @@ stages{
     }
     stage('docker deploy'){
         steps {
-            ansiblePlaybook credentialsId: 'dev-user',
-            disableHostKeyChecking: true,
+            ansiblePlaybook //  credentialsId: 'dev-user',       //ansiblePlaybook extras: 'DOCKER_TAG=""', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
+            //disableHostKeyChecking: true,
             extras: "-e DOCKER_TAG=${DOCKER_TAG}",
             installation: 'ansible',
             inventory: 'dev.inv',
