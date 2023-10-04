@@ -34,7 +34,7 @@ stages{
     }
     stage('docker deploy'){
         steps{
-             ansiblePlaybook  extras: "-e DOCKER_TAG=${DOCKER_TAG}",, installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
+             ansiblePlaybook  extras: "-e DOCKER_TAG=${DOCKER_TAG}", installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
         }
        /* steps {
             ansiblePlaybook //  credentialsId: 'dev-user',      
