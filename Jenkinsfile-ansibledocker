@@ -32,7 +32,7 @@ stages{
             sh 'docker push malekkkk/testing:${DOCKER_TAG}'  //docker push your-username/my-app:latest
         }
     }
-    stage('docker deploy'){
+  /*  stage('docker deploy'){
         //steps{
       //       ansiblePlaybook  extras: "-e DOCKER_TAG=${DOCKER_TAG}", installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
       //  }
@@ -46,7 +46,8 @@ stages{
             playbook: 'deploy-docker.yml'
         } 
     } 
-}}
+}*/
+}
 def getVersion()
 {
    def commitHash = sh returnStdout: true, script: 'git rev-parse --short  HEAD'
