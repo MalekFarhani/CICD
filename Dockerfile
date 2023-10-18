@@ -1,6 +1,6 @@
-//FROM tomcat:8
+# FROM tomcat:8
 # Take the war and copy to webapps of tomcat
-//COPY target/*.war /usr/local/tomcat/webapps/dockeransible.war
+# COPY target/*.war /usr/local/tomcat/webapps/dockeransible.war
 # Use an official OpenJDK runtime as a parent image
 # Use an official Tomcat image as a parent image
 FROM tomcat:9-jre11-slim
