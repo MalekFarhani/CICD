@@ -6,7 +6,7 @@
 FROM tomcat:9-jre11-slim
 
 # Copy the Spring Boot application WAR file into the Tomcat webapps directory
-COPY target/*.war /usr/local/tomcat/webapps/dockeransible.war
+COPY target/*.war /usr/local/tomcat/webapps/myweb.war
 
 # Expose the port your Spring Boot application will run on (default is 8080)
 EXPOSE 8080
