@@ -45,8 +45,8 @@ stages{
             inventory: 'dev.inv',
             playbook: 'deploy-docker.yml'
         } 
-    } 
-}*/
+    } */
+}
 }
 def getVersion()
 {
